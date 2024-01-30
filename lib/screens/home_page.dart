@@ -4,7 +4,10 @@ import 'package:ministry/constants/constants.dart';
 import 'package:ministry/screens/call_page.dart';
 import 'package:ministry/screens/content_page.dart';
 import 'package:ministry/screens/notif_page.dart';
+import 'package:ministry/screens/search_page.dart';
+import 'package:ministry/screens/send_complaint_page.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -147,9 +150,20 @@ class _HomePageState extends State<HomePage> {
             AnimatedPositioned(
               bottom: showSendComplaint ? 30 : -60,
               duration: const Duration(milliseconds: 500),
-              child: Image.asset(
-                './assets/images/sendComplaint.png',
-                width: 200,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      child: const SendComplaintPage(),
+                      type: PageTransitionType.leftToRight,
+                    ),
+                  );
+                },
+                child: Image.asset(
+                  './assets/images/sendComplaint.png',
+                  width: 200,
+                ),
               ),
             ),
             // buttons
@@ -207,6 +221,35 @@ class BuildMainButton extends StatelessWidget {
             );
             break;
           case 1:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const SearchPage(),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const ContentPage(
+                  title: 'حول التطبيق',
+                ),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const ContentPage(
+                  title: 'ارشادات',
+                ),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
             break;
           default:
         }
@@ -239,6 +282,70 @@ class BuildDrawerItem extends StatelessWidget {
             Navigator.of(context).pop(false);
             break;
           case 1:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const SendComplaintPage(),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const SearchPage(),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const CallPage(),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 4:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const ContentPage(
+                  title: 'حول التطبيق',
+                ),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 5:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const ContentPage(
+                  title: 'ارشادات',
+                ),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 6:
+            Navigator.push(
+              context,
+              PageTransition(
+                child: const NotifPage(),
+                type: PageTransitionType.leftToRight,
+              ),
+            );
+            break;
+          case 7:
+            final box = context.findRenderObject() as RenderBox?;
+            Share.share(
+              "أدعوك للاطلاع على تطبيق (${Constants.packageInfo.appName}) وذلك عبر الرابط التالي: \n https://play.google.com/store/apps/details?id=${Constants.packageInfo.packageName}",
+              subject: "المشاركة ضمن:",
+              sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+            );
             break;
           default:
         }

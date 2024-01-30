@@ -1,4 +1,4 @@
-package com.example.ministry
+package moelc.iq.complaints
 
 import io.flutter.embedding.android.FlutterActivity
 

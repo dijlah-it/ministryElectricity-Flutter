@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "313817447634",
+    "project_id": "moelc-799b3",
+    "storage_bucket": "moelc-799b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313817447634:android:c60505ca37f73334acc10b",
+        "android_client_info": {
+          "package_name": "moelc.iq.complaints"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Q2-_vDNEk4Ppy2cBegBg8E58JFZMLtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
