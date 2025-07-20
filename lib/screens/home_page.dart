@@ -65,27 +65,25 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         key: scaffoldKey,
         drawer: Drawer(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Image.asset(
-                  './assets/images/headerDrawer.png',
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: List.generate(
-                      _drawerItemsTitles.length,
-                      (index) => BuildDrawerItem(
-                        icon: _drawerItemsIcons[index],
-                        title: _drawerItemsTitles[index],
-                        tag: index,
-                      ),
+          child: Column(
+            children: <Widget>[
+              Image.asset(
+                './assets/images/headerDrawer.png',
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: List.generate(
+                    _drawerItemsTitles.length,
+                    (index) => BuildDrawerItem(
+                      icon: _drawerItemsIcons[index],
+                      title: _drawerItemsTitles[index],
+                      tag: index,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         body: Stack(
@@ -107,10 +105,9 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-                        debugPrint('Drawer open !');
                         scaffoldKey.currentState?.openDrawer();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.menu,
                         size: 30,
                         color: Colors.white,
@@ -126,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.notification_important,
                         size: 30,
                         color: Colors.white,

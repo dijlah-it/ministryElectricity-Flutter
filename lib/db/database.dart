@@ -57,10 +57,10 @@ saveTrackingId(String trackingId) {
 }
 
 saveNotif({String? body, String? title}) async {
-  debugPrint('11111111111111');
-  debugPrint(DateTime.now().toString());
+
+
   db?.insert(
-    'notificationqewq',
+    'notification',
     {
       'title': title,
       'body': body,
@@ -71,8 +71,7 @@ saveNotif({String? body, String? title}) async {
 
 Future getNotifactions() async {
   Constants.notifactionsContentList.clear();
-  List<Map> result =
-      await db!.rawQuery('SELECT * FROM notification ORDER BY id DESC');
+  List<Map> result = await db!.rawQuery('SELECT * FROM notification');
   debugPrint(result.toString() + '<<<<<<<');
   for (var row in result) {
     Constants.notifactionsContentList.add({
@@ -82,6 +81,5 @@ Future getNotifactions() async {
       'data_time': row['data_time'],
     });
   }
-  debugPrint(
-      "${Constants.notifactionsContentList.length}<------Constants.bookMarkContent.length");
+ 
 }

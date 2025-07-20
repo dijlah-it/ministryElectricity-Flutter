@@ -40,7 +40,6 @@ dependencies:
   flutter_phone_direct_caller: ^2.1.1
   firebase_messaging: ^14.7.9
   firebase_core: ^2.24.2
-  geolocator: ^10.1.0
   sqflite: ^2.3.0
   share_plus: ^7.2.1
   package_info_plus: ^5.0.1
@@ -48,6 +47,8 @@ dependencies:
   url_launcher: ^6.2.4
   lottie: ^3.0.0
   http: ^1.2.0
+  shared_preferences: ^2.2.2
+  substring_highlight: ^1.0.33
 dev_dependencies:
   flutter_test:
     sdk: flutter

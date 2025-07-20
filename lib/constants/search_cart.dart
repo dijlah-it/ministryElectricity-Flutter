@@ -70,7 +70,7 @@ class SearchCart extends StatelessWidget {
                         child: Text(
                           complaintsId,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: Constants.regularFontFamily,
                             fontSize: 17,
                           ),

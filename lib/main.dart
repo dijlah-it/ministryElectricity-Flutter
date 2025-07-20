@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:ministry/api/firebase_api.dart';
 import 'package:ministry/constants/constants.dart';
 import 'package:ministry/db/database.dart';
@@ -37,6 +36,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _initPackageInfo();
     initializeDB.initDb();
+    
   }
 
   Future<void> _initPackageInfo() async {

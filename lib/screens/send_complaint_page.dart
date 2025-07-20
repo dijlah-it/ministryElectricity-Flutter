@@ -17,7 +17,6 @@ final Completer<WebViewController> _controller = Completer<WebViewController>();
 late final WebViewController _webViewController;
 
 class _SendComplaintPageState extends State<SendComplaintPage> {
-  bool _pageFinish = true;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,6 @@ class _SendComplaintPageState extends State<SendComplaintPage> {
             name: 'SaveTrackingId',
             onMessageReceived: (JavascriptMessage message) {
               print(message.message);
-              debugPrint('=============11==============');
               saveTrackingId(message.message);
             },
           ),

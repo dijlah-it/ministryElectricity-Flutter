@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ministry/constants/appbar.dart';
-import 'package:ministry/constants/constants.dart';
 import 'package:ministry/constants/notif_cart.dart';
 import 'package:ministry/db/database.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NotifPage extends StatefulWidget {
   const NotifPage({super.key});
@@ -13,6 +13,22 @@ class NotifPage extends StatefulWidget {
 }
 
 class _NotifPageState extends State<NotifPage> {
+  List<String> titleContent = [];
+  List<String> bodyContent = [];
+  _getContents() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      titleContent = pref.getStringList("titleContent") ?? [];
+      bodyContent = pref.getStringList("bodyContent") ?? [];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getContents();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -21,7 +37,7 @@ class _NotifPageState extends State<NotifPage> {
       body: FutureBuilder(
         future: getNotifactions(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return Constants.notifactionsContentList.isNotEmpty
+          return bodyContent.isNotEmpty
               ? Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: SizedBox(
@@ -29,14 +45,12 @@ class _NotifPageState extends State<NotifPage> {
                     height: size.height,
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
-                      itemCount: Constants.notifactionsContentList.length,
+                      itemCount: bodyContent.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return NotifCart(
-                          title: Constants.notifactionsContentList[index]
-                              ['title'],
-                          bodyText: Constants.notifactionsContentList[index]
-                              ['body'],
+                          title: titleContent[index],
+                          bodyText: bodyContent[index],
                         );
                       },
                     ),
